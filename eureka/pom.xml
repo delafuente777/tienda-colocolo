@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="
+            http://maven.apache.org/POM/4.0.0
+            https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- ============================================================
+         MODELO MAVEN
+         ============================================================ -->
+    <modelVersion>4.0.0</modelVersion>
+
+
+    <!-- ============================================================
+         PROYECTO PADRE
+         ============================================================ -->
+    <parent>
+        <groupId>cl.colocolo</groupId>
+        <artifactId>tienda</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+
+    <!-- ============================================================
+         DATOS DE ESTE MODULO
+         ============================================================ -->
+    <groupId>cl.colocolo</groupId>
+    <artifactId>cl-colocolo-eureka</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <name>Tienda Colo Colo - Eureka</name>
+    <description>
+        Servidor Eureka para el descubrimiento y registro
+        de microservicios de la tienda Colo Colo.
+    </description>
+
+    <packaging>jar</packaging>
+
+
+    <!-- ============================================================
+         DEPENDENCIAS
+         ============================================================ -->
+    <dependencies>
+
+        <!-- ========================================================
+             SERVIDOR EUREKA
+             ======================================================== -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+        </dependency>
+
+
+        <!-- ========================================================
+             TESTING
+             ======================================================== -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+
+        <!-- ========================================================
+             VALIDACION
+             ======================================================== -->
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+        </dependency>
+
+
+        <!-- ========================================================
+             CACHE
+             ======================================================== -->
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+        </dependency>
+
+    </dependencies>
+
+
+    <!-- ============================================================
+         BUILD
+         ============================================================ -->
+    <build>
+
+        <plugins>
+
+            <!-- ====================================================
+                 SPRING BOOT
+                 ==================================================== -->
+            <plugin>
+
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
+                <configuration>
+
+                    <!--
+                        IMPORTANTE:
+                        Este nombre debe coincidir con la clase Java
+                        real que tengas dentro de eureka.
+                    -->
+                    <mainClass>
+                        cl.colocolo.eureka.ColoColoEurekaApplication
+                    </mainClass>
+
+                </configuration>
+
+            </plugin>
+
+
+            <!-- ====================================================
+                 TESTS
+                 ==================================================== -->
+            <plugin>
+
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+
+            </plugin>
+
+        </plugins>
+
+    </build>
+
+</project>

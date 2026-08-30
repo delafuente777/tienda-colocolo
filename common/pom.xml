@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- Modelo base de Maven -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--
+        *******************************************
+        HERENCIA DEL PROYECTO PADRE
+        *******************************************
+    -->
+
+    <parent>
+        <groupId>cl.colocolo</groupId>
+        <artifactId>tienda</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+
+    <!--
+        *******************************************
+        IDENTIDAD DEL MODULO COMMON
+        *******************************************
+    -->
+
+    <groupId>cl.colocolo</groupId>
+    <artifactId>cl-colocolo-common</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <name>Tienda Colo Colo - Common</name>
+    <description>
+        Libreria compartida con clases comunes a todos los microservicios
+        de la tienda Colo Colo.
+    </description>
+
+
+    <!-- Empaquetado como JAR de libreria -->
+    <packaging>jar</packaging>
+
+
+    <!--
+        *******************************************
+        DEPENDENCIAS
+        *******************************************
+    -->
+
+    <dependencies>
+
+        <!-- Spring Boot Starter Web -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- OpenFeign -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
+
+
+    <!--
+        *******************************************
+        BUILD
+        *******************************************
+    -->
+
+    <build>
+
+        <plugins>
+
+            <!--
+                Common es una libreria compartida.
+                No debe generar un JAR ejecutable de Spring Boot.
+            -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+
+            </plugin>
+
+        </plugins>
+
+    </build>
+
+</project>
